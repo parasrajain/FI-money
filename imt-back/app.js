@@ -49,7 +49,12 @@ app.use(cookieParser());
 
 // Enable CORS
 app.use(cors({
-  origin: 'http://localhost:5173',
+      origin: [
+        'http://localhost:3000',     // For local development
+        'http://frontend:3000',      // For Docker container communication
+        'http://127.0.0.1:3000'      // Alternative localhost
+    ],
+
   credentials: true
 }));
 

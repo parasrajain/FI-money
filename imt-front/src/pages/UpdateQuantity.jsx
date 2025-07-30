@@ -10,7 +10,7 @@ export default function UpdateQuantity() {
     e.preventDefault();
 
     try {
-      const res = await fetch(`http://localhost:8080/api/products/${productId}/quantity`, {
+      const res = await fetch(`http://localhost:5000/api/products/${productId}/quantity`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

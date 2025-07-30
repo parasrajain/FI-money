@@ -142,7 +142,7 @@ export default function Products() {
       const authData = JSON.parse(localStorage.getItem("auth")) || {};
       const token = authData.token;
 
-      const res = await fetch(`http://localhost:8080/api/products`, {
+      const res = await fetch(`http://localhost:5000/api/products`, {
         method: "GET",
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -177,7 +177,7 @@ export default function Products() {
       const authData = JSON.parse(localStorage.getItem("auth")) || {};
       const token = authData.token;
 
-      const res = await fetch(`http://localhost:8080/api/products/${id}/quantity`, {
+      const res = await fetch(`http://localhost:5000/api/products/${id}/quantity`, {
         method: "PUT",
         headers: { 
           "Content-Type": "application/json",

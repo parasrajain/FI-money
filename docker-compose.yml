@@ -1,0 +1,53 @@
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    networks:
+      - fi-money-network
+
+  backend:
+    build:
+      context: ./imt-back
+      dockerfile: Dockerfile
+    container_name: backend
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=development
+      - MONGO_URI=mongodb+srv://parasrajain7:parasrajain@cluster0.lnfxv.mongodb.net/imtnew?retryWrites=true&w=majority&appName=Cluster0
+      - JWT_SECRET=ParasRajain
+    depends_on:
+      - mongo
+    networks:
+      - fi-money-network
+    volumes:
+      - ./imt-back:/app
+      - /app/node_modules
+
+  frontend:
+    build:
+      context: ./imt-front
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_BASE_URL=http://localhost:5000
+    depends_on:
+      - backend
+    networks:
+      - fi-money-network
+
+volumes:
+  mongo-data:
+
+networks:
+  fi-money-network:
+    driver: bridge

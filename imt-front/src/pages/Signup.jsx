@@ -135,7 +135,7 @@ export default function Signup() {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post("http://localhost:8080/api/auth/register", formData, {
+      await axios.post("http://localhost:5000/api/auth/register", formData, {
         withCredentials: true,
       });
       toast.success("Registration successful! Please login.");
