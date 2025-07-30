@@ -14,22 +14,27 @@ This API uses Bearer Token authentication with JWT tokens for protected endpoint
 ### User Management
 
 #### Register User
-- **Endpoint:** `POST /api/user/register`
+- **Endpoint:** `POST /api/auth/register`
 - **Description:** Register a new user
 - **Request Body:**
   ```json
+
   {
-    "name": "string",
-    "email": "string", 
-    "password": "string"
+   "firstName": "String",
+    "lastName":"String",
+    "email":"email",
+    "password":"String",
+    "mobileNumber":"String",
+    "role":"String"
   }
+
   ```
 - **Responses:**
   - `201` - User registered successfully
   - `400` - Bad request
 
 #### Login User
-- **Endpoint:** `POST /api/user/login`
+- **Endpoint:** `POST /api/auth/login`
 - **Description:** Login user
 - **Request Body:**
   ```json
@@ -43,7 +48,7 @@ This API uses Bearer Token authentication with JWT tokens for protected endpoint
   - `401` - Invalid credentials
 
 #### Logout User
-- **Endpoint:** `GET /api/user/logout`
+- **Endpoint:** `GET /api/auth/logout`
 - **Description:** Logout user
 - **Responses:**
   - `200` - User logged out
@@ -51,7 +56,7 @@ This API uses Bearer Token authentication with JWT tokens for protected endpoint
 ### Product Management
 
 #### Add Product
-- **Endpoint:** `POST /api/product/addproduct`
+- **Endpoint:** `POST /api/products`
 - **Description:** Add a new product
 - **Authentication:** Required (Bearer Token)
 - **Request Body:**
@@ -71,7 +76,7 @@ This API uses Bearer Token authentication with JWT tokens for protected endpoint
   - `400` - Invalid product data
 
 #### Fetch Product by ID
-- **Endpoint:** `GET /api/product/fetch-product/{id}`
+- **Endpoint:** `GET /api/products/{id}`
 - **Description:** Fetch a product by ID
 - **Parameters:**
   - `id` (path, required) - Product ID
@@ -80,7 +85,7 @@ This API uses Bearer Token authentication with JWT tokens for protected endpoint
   - `404` - Product not found
 
 #### Update Product by ID
-- **Endpoint:** `PUT /api/product/update-product/{id}`
+- **Endpoint:** `PUT /api/products/update-product/{id}`
 - **Description:** Update a product by ID
 - **Authentication:** Required (Bearer Token)
 - **Parameters:**
